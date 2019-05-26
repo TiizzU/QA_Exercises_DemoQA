@@ -5,21 +5,29 @@ namespace QA_Exercises_DemoQA
     using OpenQA.Selenium;
     using OpenQA.Selenium.Chrome;
     using OpenQA.Selenium.Remote;
+    using QA_Exercises_DemoQA.Pages.HomePage;
     using System;
+    using System.IO;
 
     [TestFixture]
     public class BaseTest
     {
         protected IWebDriver driver;
 
+        protected HomePage homePage;
+
         [SetUp]
         public void SetUp()
         {
             //Driver
             driver = GetChromeDriver();
-
+            
             // Maximize The Window
             driver.Manage().Window.Maximize();
+
+            // HomePage
+            homePage = new HomePage(driver);
+
             
         }
 
